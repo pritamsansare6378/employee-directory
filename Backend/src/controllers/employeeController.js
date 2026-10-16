@@ -6,7 +6,7 @@ async function getAll(req, res) {
 }
 
 async function create(req, res) {
-  const employee = await employeeService.createEmployee(req.validated.body);
+  const employee = await employeeService.createEmployee(req.body);
   res
     .location(`/employees/${employee.id}`)
     .status(201)
@@ -14,13 +14,13 @@ async function create(req, res) {
 }
 
 async function update(req, res) {
-  const { id } = req.validated.params;
-  const employee = await employeeService.updateEmployee(id, req.validated.body);
+  const { id } = req.params;
+  const employee = await employeeService.updateEmployee(id, req.body);
   res.status(200).json(employee);
 }
 
 async function remove(req, res) {
-  const { id } = req.validated.params;
+  const { id } = req.params;
   await employeeService.deleteEmployee(id);
   res.status(204).send();
 }

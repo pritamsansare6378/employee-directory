@@ -13,6 +13,6 @@ const router = express.Router();
 router.get("/", asyncHandler(employeeController.getAll));
 router.post("/", validate(createEmployeeSchema), asyncHandler(employeeController.create));
 router.put("/:id", validate(updateEmployeeSchema), asyncHandler(employeeController.update));
-router.delete("/:id", validate(employeeIdSchema), asyncHandler(employeeController.remove));
+router.delete("/:id", asyncHandler(employeeController.remove));
 
 module.exports = { employeeRoutes: router };
